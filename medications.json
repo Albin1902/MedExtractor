@@ -1,0 +1,1712 @@
+[
+  {
+    "name": "ALYSENA-28",
+    "strength": "100/20 MCG",
+    "din": "02387883",
+    "mfr": "APO",
+    "commonName": "Birth Control Pill",
+    "category": "Other",
+    "drugClass": "Oral Contraceptive",
+    "condition": "Contraception / Birth Control",
+    "brands": [
+      "Alesse"
+    ],
+    "isGeneric": true,
+    "odb": "Not Covered",
+    "odbNotes": "ODB does not routinely cover oral contraceptives.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#f472b6",
+    "c2": "#f472b6",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "AMLODIPINE",
+    "strength": "10 MG",
+    "din": "02331292",
+    "mfr": "SAN",
+    "commonName": "Blood Pressure Pill",
+    "category": "BP & Heart",
+    "drugClass": "Calcium Channel Blocker",
+    "condition": "Hypertension / Angina",
+    "brands": [
+      "Norvasc"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#60a5fa",
+    "c2": "#60a5fa",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "AMLODIPINE",
+    "strength": "5 MG",
+    "din": "02331284",
+    "mfr": "SAN",
+    "commonName": "Blood Pressure Pill",
+    "category": "BP & Heart",
+    "drugClass": "Calcium Channel Blocker",
+    "condition": "Hypertension / Angina",
+    "brands": [
+      "Norvasc"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#93c5fd",
+    "c2": "#93c5fd",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "AMOXICILLIN",
+    "strength": "500 MG",
+    "din": "02525356",
+    "mfr": "SAN",
+    "commonName": "Penicillin Antibiotic",
+    "category": "Antibiotics",
+    "drugClass": "Penicillin Antibiotic",
+    "condition": "Bacterial Infections / Strep Throat / Ear Infections",
+    "brands": [
+      "Amoxil"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "capsule",
+    "c1": "#fbbf24",
+    "c2": "#f87171",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "APIXABAN",
+    "strength": "2.5 MG",
+    "din": "02548879",
+    "mfr": "SAN",
+    "commonName": "Blood Thinner (Eliquis type)",
+    "category": "Blood Thinner",
+    "drugClass": "Direct Oral Anticoagulant (DOAC)",
+    "condition": "Atrial Fibrillation / DVT / Blood Clot Prevention",
+    "brands": [
+      "Eliquis"
+    ],
+    "isGeneric": true,
+    "odb": "Limited Use",
+    "odbNotes": "LU code required \u2014 AF, DVT/PE prevention indications.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#fbbf24",
+    "c2": "#fbbf24",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "APO-DOXY",
+    "strength": "100 MG",
+    "din": "",
+    "mfr": "APO",
+    "commonName": "Doxycycline Antibiotic",
+    "category": "Antibiotics",
+    "drugClass": "Tetracycline Antibiotic",
+    "condition": "Bacterial Infections / Acne / Lyme Disease",
+    "brands": [
+      "Vibramycin"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "capsule",
+    "c1": "#fbbf24",
+    "c2": "#34d399",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "APO-NAPROXEN",
+    "strength": "500 MG",
+    "din": "",
+    "mfr": "APO",
+    "commonName": "Anti-Inflammatory (Naprosyn type)",
+    "category": "Pain & Nerve",
+    "drugClass": "NSAID",
+    "condition": "Pain / Arthritis / Inflammation",
+    "brands": [
+      "Naprosyn",
+      "Aleve"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#94a3b8",
+    "c2": "#94a3b8",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "ATORVASTATIN",
+    "strength": "10 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Cholesterol Pill (Lipitor type)",
+    "category": "Cholesterol",
+    "drugClass": "Statin",
+    "condition": "High Cholesterol / Hyperlipidemia",
+    "brands": [
+      "Lipitor"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#a78bfa",
+    "c2": "#a78bfa",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "ATORVASTATIN",
+    "strength": "20 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Cholesterol Pill (Lipitor type)",
+    "category": "Cholesterol",
+    "drugClass": "Statin",
+    "condition": "High Cholesterol / Hyperlipidemia",
+    "brands": [
+      "Lipitor"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#a78bfa",
+    "c2": "#a78bfa",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "ATORVASTATIN",
+    "strength": "40 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Cholesterol Pill (Lipitor type)",
+    "category": "Cholesterol",
+    "drugClass": "Statin",
+    "condition": "High Cholesterol / Hyperlipidemia",
+    "brands": [
+      "Lipitor"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#a78bfa",
+    "c2": "#a78bfa",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "ATORVASTATIN",
+    "strength": "80 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Cholesterol Pill (Lipitor type)",
+    "category": "Cholesterol",
+    "drugClass": "Statin",
+    "condition": "High Cholesterol / Hyperlipidemia",
+    "brands": [
+      "Lipitor"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#c4b5fd",
+    "c2": "#c4b5fd",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "AURO-BILASTINE",
+    "strength": "20 MG",
+    "din": "",
+    "mfr": "AUR",
+    "commonName": "Allergy Pill (Blexten type)",
+    "category": "Other",
+    "drugClass": "H1 Antihistamine",
+    "condition": "Seasonal Allergies / Hives / Rhinitis",
+    "brands": [
+      "Blexten"
+    ],
+    "isGeneric": true,
+    "odb": "Not Covered",
+    "odbNotes": "Bilastine not on Ontario formulary \u2014 patient pays out-of-pocket.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#34d399",
+    "c2": "#34d399",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "BACLOFEN",
+    "strength": "10 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Muscle Relaxer",
+    "category": "Pain & Nerve",
+    "drugClass": "Muscle Relaxant",
+    "condition": "Muscle Spasm / Spasticity / MS",
+    "brands": [
+      "Lioresal"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#e2e8f0",
+    "c2": "#e2e8f0",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "CEPHALEXIN",
+    "strength": "500 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Cephalosporin Antibiotic",
+    "category": "Antibiotics",
+    "drugClass": "Cephalosporin Antibiotic",
+    "condition": "Bacterial Infections / Skin Infections / UTI",
+    "brands": [
+      "Keflex"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "capsule",
+    "c1": "#f87171",
+    "c2": "#fbbf24",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "CITALOPRAM",
+    "strength": "20 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Antidepressant (Celexa type)",
+    "category": "Mental Health",
+    "drugClass": "SSRI",
+    "condition": "Depression / Anxiety / Panic Disorder",
+    "brands": [
+      "Celexa"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#fde68a",
+    "c2": "#fde68a",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "CLOPIDOGREL",
+    "strength": "75 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Blood Thinner (Plavix type)",
+    "category": "Blood Thinner",
+    "drugClass": "Antiplatelet Agent",
+    "condition": "Heart Attack / Stroke Prevention",
+    "brands": [
+      "Plavix"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#f87171",
+    "c2": "#f87171",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "DAYVIGO",
+    "strength": "5 MG",
+    "din": "",
+    "mfr": "EIS",
+    "commonName": "Sleeping Pill (Newer type)",
+    "category": "Sleep & Anxiety",
+    "drugClass": "Orexin Receptor Antagonist",
+    "condition": "Insomnia (Difficulty Falling / Staying Asleep)",
+    "brands": [
+      "Dayvigo"
+    ],
+    "isGeneric": false,
+    "odb": "Not Covered",
+    "odbNotes": "Lemborexant not on Ontario formulary \u2014 brand drug, patient pays full cost.",
+    "copay": true,
+    "copaySteps": {
+      "name": "Dayvigo",
+      "manufacturer": "Eisai Canada",
+      "phone": "1-833-374-2637",
+      "website": "dayvigo.ca",
+      "steps": [
+        {
+          "title": "Confirm eligibility",
+          "detail": "Patient must have private insurance; program covers the co-pay portion after insurance pays."
+        },
+        {
+          "title": "Call or visit the website",
+          "detail": "Call Eisai at 1-833-374-2637 or go to dayvigo.ca to enroll patient."
+        },
+        {
+          "title": "Complete enrollment form",
+          "detail": "Patient provides name, DOB, insurance info, and prescriber name."
+        },
+        {
+          "title": "Receive savings card",
+          "detail": "Card is mailed or provided digitally \u2014 patient presents at pick-up window."
+        },
+        {
+          "title": "Apply at dispensary",
+          "detail": "Scan card at point-of-sale. Eisai covers remaining co-pay up to program limits."
+        }
+      ]
+    },
+    "pillShape": "oval",
+    "c1": "#818cf8",
+    "c2": "#818cf8",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "ESCITALOPRAM",
+    "strength": "20 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Antidepressant (Cipralex type)",
+    "category": "Mental Health",
+    "drugClass": "SSRI",
+    "condition": "Depression / Generalized Anxiety Disorder",
+    "brands": [
+      "Cipralex",
+      "Lexapro"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#fde68a",
+    "c2": "#fde68a",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "ESTROGEL",
+    "strength": "0.06%",
+    "din": "",
+    "mfr": "ORG",
+    "commonName": "Estrogen Gel (Hormone Therapy)",
+    "category": "Thyroid & Hormones",
+    "drugClass": "Estrogen (Hormone Therapy)",
+    "condition": "Menopause Symptoms / Estrogen Deficiency",
+    "brands": [
+      "Estrogel"
+    ],
+    "isGeneric": false,
+    "odb": "Limited Use",
+    "odbNotes": "LU code required \u2014 menopausal symptoms or osteoporosis indication.",
+    "copay": true,
+    "copaySteps": {
+      "name": "Estrogel",
+      "manufacturer": "Organon Canada",
+      "phone": "1-888-394-7377",
+      "website": "organon.com/ca",
+      "steps": [
+        {
+          "title": "Ask for Organon patient support",
+          "detail": "Call Organon at 1-888-394-7377 or ask pharmacist for the current co-pay card."
+        },
+        {
+          "title": "Complete patient enrollment",
+          "detail": "Patient fills in name, DOB, and prescriber details on the form."
+        },
+        {
+          "title": "Verify insurance",
+          "detail": "Program is meant to cover remaining co-pay after private insurance (not intended for ODB-only patients)."
+        },
+        {
+          "title": "Receive/download card",
+          "detail": "Card can be printed from the website or provided by pharmacist."
+        },
+        {
+          "title": "Present at pick-up",
+          "detail": "Scan savings card at dispensary window. Savings applied instantly at point-of-sale."
+        }
+      ]
+    },
+    "pillShape": "gel",
+    "c1": "#f9a8d4",
+    "c2": "#f9a8d4",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "FLUOXETINE",
+    "strength": "20 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Antidepressant (Prozac type)",
+    "category": "Mental Health",
+    "drugClass": "SSRI",
+    "condition": "Depression / OCD / Bulimia / Panic Disorder",
+    "brands": [
+      "Prozac",
+      "Sarafem"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "capsule",
+    "c1": "#34d399",
+    "c2": "#a78bfa",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "FUROSEMIDE",
+    "strength": "40 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Water Pill (Lasix type)",
+    "category": "BP & Heart",
+    "drugClass": "Loop Diuretic",
+    "condition": "Edema / Heart Failure / Hypertension",
+    "brands": [
+      "Lasix"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#e2e8f0",
+    "c2": "#e2e8f0",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "GABAPENTIN",
+    "strength": "300 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Nerve Pain Pill",
+    "category": "Pain & Nerve",
+    "drugClass": "Neuropathic Pain Agent / Anticonvulsant",
+    "condition": "Neuropathic Pain / Epilepsy / Shingles Pain",
+    "brands": [
+      "Neurontin"
+    ],
+    "isGeneric": true,
+    "odb": "Limited Use",
+    "odbNotes": "LU code required for neuropathic pain; general benefit for epilepsy.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "capsule",
+    "c1": "#fde68a",
+    "c2": "#fde68a",
+    "controlled": true,
+    "opioid": false
+  },
+  {
+    "name": "JAMP-FER",
+    "strength": "300 MG",
+    "din": "",
+    "mfr": "JAM",
+    "commonName": "Iron Pill",
+    "category": "Other",
+    "drugClass": "Iron Supplement",
+    "condition": "Iron Deficiency Anemia",
+    "brands": [
+      "Palafer",
+      "FeroGrad"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "capsule",
+    "c1": "#b45309",
+    "c2": "#d97706",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "JARDIANCE",
+    "strength": "10 MG",
+    "din": "",
+    "mfr": "BOE",
+    "commonName": "Diabetes & Heart Pill (SGLT2 type)",
+    "category": "Diabetes",
+    "drugClass": "SGLT2 Inhibitor",
+    "condition": "Type 2 Diabetes / Heart Failure / Chronic Kidney Disease",
+    "brands": [
+      "Jardiance"
+    ],
+    "isGeneric": false,
+    "odb": "Limited Use",
+    "odbNotes": "LU code required \u2014 T2DM with established CV disease or HF.",
+    "copay": true,
+    "copaySteps": {
+      "name": "Jardiance",
+      "manufacturer": "Boehringer Ingelheim",
+      "phone": "1-877-331-7827",
+      "website": "jardiance.ca",
+      "steps": [
+        {
+          "title": "Go to jardiance.ca or call",
+          "detail": "Visit jardiance.ca/patient or call Boehringer Ingelheim at 1-877-331-7827 Mon\u2013Fri 8am\u20138pm ET."
+        },
+        {
+          "title": "Enroll patient online",
+          "detail": "Click 'Get Savings Card'. Enter patient name, date of birth, and province."
+        },
+        {
+          "title": "Print or save the card",
+          "detail": "Card is generated immediately \u2014 can be printed or saved to phone."
+        },
+        {
+          "title": "Verify insurance first",
+          "detail": "The copay card covers the patient's share after insurance. ODB-only patients should call the support line."
+        },
+        {
+          "title": "Scan card at pick-up",
+          "detail": "Scan barcode on savings card at dispensary. Boehringer covers the co-pay up to program maximum per fill."
+        }
+      ]
+    },
+    "pillShape": "oval",
+    "c1": "#6ee7b7",
+    "c2": "#6ee7b7",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "JARDIANCE",
+    "strength": "25 MG",
+    "din": "",
+    "mfr": "BOE",
+    "commonName": "Diabetes & Heart Pill (SGLT2 type)",
+    "category": "Diabetes",
+    "drugClass": "SGLT2 Inhibitor",
+    "condition": "Type 2 Diabetes / Heart Failure / Chronic Kidney Disease",
+    "brands": [
+      "Jardiance"
+    ],
+    "isGeneric": false,
+    "odb": "Limited Use",
+    "odbNotes": "LU code required \u2014 T2DM with established CV disease or HF.",
+    "copay": true,
+    "copaySteps": {
+      "name": "Jardiance 25mg",
+      "manufacturer": "Boehringer Ingelheim",
+      "phone": "1-877-331-7827",
+      "website": "jardiance.ca",
+      "steps": [
+        {
+          "title": "Go to jardiance.ca or call",
+          "detail": "Visit jardiance.ca/patient or call Boehringer Ingelheim at 1-877-331-7827 Mon\u2013Fri 8am\u20138pm ET."
+        },
+        {
+          "title": "Enroll patient online",
+          "detail": "Click 'Get Savings Card'. Enter patient name, date of birth, and province."
+        },
+        {
+          "title": "Print or save the card",
+          "detail": "Card is generated immediately \u2014 can be printed or saved to phone."
+        },
+        {
+          "title": "Verify insurance first",
+          "detail": "The copay card covers the patient's share after insurance. ODB-only patients should call the support line."
+        },
+        {
+          "title": "Scan card at pick-up",
+          "detail": "Scan barcode on savings card at dispensary. Boehringer covers the co-pay up to program maximum per fill."
+        }
+      ]
+    },
+    "pillShape": "oval",
+    "c1": "#34d399",
+    "c2": "#34d399",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "JUBLIA",
+    "strength": "10%",
+    "din": "",
+    "mfr": "BAU",
+    "commonName": "Nail Fungus Treatment",
+    "category": "Other",
+    "drugClass": "Antifungal (Topical)",
+    "condition": "Onychomycosis (Nail Fungus)",
+    "brands": [
+      "Jublia"
+    ],
+    "isGeneric": false,
+    "odb": "Not Covered",
+    "odbNotes": "Not on Ontario formulary \u2014 cosmetic/nail indication typically excluded.",
+    "copay": true,
+    "copaySteps": {
+      "name": "Jublia",
+      "manufacturer": "Bausch Health",
+      "phone": "1-833-428-2542",
+      "website": "jublia.ca",
+      "steps": [
+        {
+          "title": "Pick up physical card at dispensary",
+          "detail": "Ask your pharmacist \u2014 Bausch Health provides printed Jublia co-pay cards to pharmacies directly."
+        },
+        {
+          "title": "Or visit jublia.ca",
+          "detail": "Go to jublia.ca and click 'Patient Savings'. Fill in patient info to receive a card."
+        },
+        {
+          "title": "Verify eligibility",
+          "detail": "Patient must be a Canadian resident with private drug insurance. ODB patients: call 1-833-428-2542."
+        },
+        {
+          "title": "Present card with prescription",
+          "detail": "Provide the card when picking up Jublia. The discount is applied instantly."
+        },
+        {
+          "title": "Annual renewal",
+          "detail": "Co-pay card is valid for 12 months. Remind patient to renew at jublia.ca before it expires."
+        }
+      ]
+    },
+    "pillShape": "gel",
+    "c1": "#fbbf24",
+    "c2": "#fbbf24",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "LB ENTERIC CTD ASA",
+    "strength": "81 MG",
+    "din": "",
+    "mfr": "PHA",
+    "commonName": "Baby Aspirin (Low-Dose)",
+    "category": "Blood Thinner",
+    "drugClass": "Antiplatelet / Salicylate",
+    "condition": "Cardiovascular Prevention / Heart Attack Prevention",
+    "brands": [
+      "Aspirin",
+      "Novasen"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#fbbf24",
+    "c2": "#fbbf24",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "MAR-KETOROLAC",
+    "strength": "10 MG",
+    "din": "",
+    "mfr": "MAR",
+    "commonName": "Strong Short-term Pain Pill (Toradol)",
+    "category": "Pain & Nerve",
+    "drugClass": "NSAID (Short-term Analgesic)",
+    "condition": "Acute Pain / Post-operative Pain",
+    "brands": [
+      "Toradol"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 short-term use only (max 5 days oral).",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#e2e8f0",
+    "c2": "#e2e8f0",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "METFORMIN",
+    "strength": "500 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Diabetes Pill (Glucophage type)",
+    "category": "Diabetes",
+    "drugClass": "Biguanide (Antidiabetic)",
+    "condition": "Type 2 Diabetes",
+    "brands": [
+      "Glucophage",
+      "Glumetza"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#e2e8f0",
+    "c2": "#e2e8f0",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "MYRBETRIQ",
+    "strength": "50 MG",
+    "din": "",
+    "mfr": "AST",
+    "commonName": "Overactive Bladder Pill",
+    "category": "Bladder & Prostate",
+    "drugClass": "Beta-3 Agonist",
+    "condition": "Overactive Bladder / Urge Incontinence",
+    "brands": [
+      "Myrbetriq"
+    ],
+    "isGeneric": false,
+    "odb": "Not Covered",
+    "odbNotes": "Not on Ontario formulary \u2014 patient pays full cost.",
+    "copay": true,
+    "copaySteps": {
+      "name": "Myrbetriq",
+      "manufacturer": "Astellas Pharma Canada",
+      "phone": "1-800-765-5616",
+      "website": "myrbetriq.ca",
+      "steps": [
+        {
+          "title": "Call Astellas mySupport",
+          "detail": "Call 1-800-765-5616 Mon\u2013Fri 8am\u20138pm ET, or visit myrbetriq.ca."
+        },
+        {
+          "title": "Enroll the patient",
+          "detail": "Provide patient name, DOB, address, and prescriber details. Enrollment takes ~5 minutes."
+        },
+        {
+          "title": "Receive savings card",
+          "detail": "Card mailed within 5\u20137 business days, or provided digitally for immediate use."
+        },
+        {
+          "title": "Confirm coverage type",
+          "detail": "Program is most beneficial for patients with private insurance. Some uninsured patients may qualify \u2014 ask the support line."
+        },
+        {
+          "title": "Scan at dispensary",
+          "detail": "Apply the card at point-of-sale. Astellas covers the eligible portion of the patient's out-of-pocket cost."
+        }
+      ]
+    },
+    "pillShape": "oval",
+    "c1": "#60a5fa",
+    "c2": "#60a5fa",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "NOVO-GESIC FORTE",
+    "strength": "500 MG",
+    "din": "",
+    "mfr": "TEV",
+    "commonName": "Tylenol / Acetaminophen",
+    "category": "Pain & Nerve",
+    "drugClass": "Analgesic / Antipyretic",
+    "condition": "Pain / Fever",
+    "brands": [
+      "Tylenol",
+      "Atasol"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#e2e8f0",
+    "c2": "#e2e8f0",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "OZEMPIC",
+    "strength": "1 MG/DOSE",
+    "din": "",
+    "mfr": "NOV",
+    "commonName": "Diabetes Injection \u2014 Weekly (Ozempic)",
+    "category": "Diabetes",
+    "drugClass": "GLP-1 Receptor Agonist",
+    "condition": "Type 2 Diabetes / Cardiovascular Risk Reduction",
+    "brands": [
+      "Ozempic"
+    ],
+    "isGeneric": false,
+    "odb": "Limited Use",
+    "odbNotes": "LU code required \u2014 T2DM inadequately controlled on 2+ oral agents.",
+    "copay": true,
+    "copaySteps": {
+      "name": "Ozempic",
+      "manufacturer": "Novo Nordisk Canada",
+      "phone": "1-844-668-6463",
+      "website": "ozempicsupport.ca",
+      "steps": [
+        {
+          "title": "Visit ozempicsupport.ca",
+          "detail": "Go to ozempicsupport.ca or call 1-844-668-6463. Click 'Get Started' under patient savings."
+        },
+        {
+          "title": "Create a patient account",
+          "detail": "Enter patient email, name, DOB, and province. Account creation is free."
+        },
+        {
+          "title": "Download or print the card",
+          "detail": "Card is generated immediately after enrollment \u2014 can be used at the pharmacy right away."
+        },
+        {
+          "title": "Check LU code status",
+          "detail": "If patient is ODB, ensure the prescriber has submitted the LU code before filling."
+        },
+        {
+          "title": "Scan at pick-up",
+          "detail": "Present the savings card at dispensary counter. Novo Nordisk covers the remaining co-pay."
+        }
+      ]
+    },
+    "pillShape": "gel",
+    "c1": "#6ee7b7",
+    "c2": "#6ee7b7",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "PANTOPRAZOLE T",
+    "strength": "40 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Stomach Acid Pill (PPI)",
+    "category": "Stomach",
+    "drugClass": "Proton Pump Inhibitor (PPI)",
+    "condition": "GERD / Acid Reflux / Peptic Ulcer",
+    "brands": [
+      "Tecta",
+      "Pantoloc"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#fde68a",
+    "c2": "#fde68a",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "PANTOPRAZOLE",
+    "strength": "40 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Stomach Acid Pill (PPI)",
+    "category": "Stomach",
+    "drugClass": "Proton Pump Inhibitor (PPI)",
+    "condition": "GERD / Acid Reflux / Peptic Ulcer",
+    "brands": [
+      "Tecta",
+      "Pantoloc"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#fde68a",
+    "c2": "#fde68a",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "PERINDOPRIL",
+    "strength": "2 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Blood Pressure Pill (ACE Inhibitor)",
+    "category": "BP & Heart",
+    "drugClass": "ACE Inhibitor",
+    "condition": "Hypertension / Heart Failure / Diabetic Nephropathy",
+    "brands": [
+      "Coversyl"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#86efac",
+    "c2": "#86efac",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "PERINDOPRIL",
+    "strength": "4 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Blood Pressure Pill (ACE Inhibitor)",
+    "category": "BP & Heart",
+    "drugClass": "ACE Inhibitor",
+    "condition": "Hypertension / Heart Failure / Diabetic Nephropathy",
+    "brands": [
+      "Coversyl"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#86efac",
+    "c2": "#86efac",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "PMS-CLONAZEPAM R",
+    "strength": "0.5 MG",
+    "din": "",
+    "mfr": "PHA",
+    "commonName": "Anxiety / Seizure Pill (Rivotril type)",
+    "category": "Sleep & Anxiety",
+    "drugClass": "Benzodiazepine",
+    "condition": "Anxiety / Panic Disorder / Seizures",
+    "brands": [
+      "Rivotril"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#f9a8d4",
+    "c2": "#f9a8d4",
+    "controlled": true,
+    "opioid": false
+  },
+  {
+    "name": "PMS-HYDROMORPHONE",
+    "strength": "1 MG",
+    "din": "",
+    "mfr": "PHA",
+    "commonName": "Strong Opioid Painkiller (Dilaudid)",
+    "category": "Opioid",
+    "drugClass": "Opioid Analgesic",
+    "condition": "Severe Pain / Cancer Pain / Post-op Pain",
+    "brands": [
+      "Dilaudid"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#fca5a5",
+    "c2": "#fca5a5",
+    "controlled": true,
+    "opioid": true
+  },
+  {
+    "name": "PREGABALIN",
+    "strength": "50 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Nerve Pain Pill (Lyrica type)",
+    "category": "Pain & Nerve",
+    "drugClass": "Neuropathic Pain Agent / Anticonvulsant",
+    "condition": "Neuropathic Pain / Fibromyalgia / Epilepsy",
+    "brands": [
+      "Lyrica"
+    ],
+    "isGeneric": true,
+    "odb": "Limited Use",
+    "odbNotes": "LU code required \u2014 neuropathic pain, epilepsy indications.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "capsule",
+    "c1": "#818cf8",
+    "c2": "#c4b5fd",
+    "controlled": true,
+    "opioid": false
+  },
+  {
+    "name": "PROGESTERONE",
+    "strength": "100 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Progesterone Capsule (Hormone Therapy)",
+    "category": "Thyroid & Hormones",
+    "drugClass": "Progestogen (Hormone Therapy)",
+    "condition": "Hormone Replacement Therapy / Endometrial Protection",
+    "brands": [
+      "Prometrium",
+      "Utrogestan"
+    ],
+    "isGeneric": true,
+    "odb": "Limited Use",
+    "odbNotes": "LU code required \u2014 menopausal HRT, endometrial protection.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "capsule",
+    "c1": "#f9a8d4",
+    "c2": "#fde68a",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "QUETIAPINE",
+    "strength": "25 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Antipsychotic / Mood Pill (Seroquel type)",
+    "category": "Mental Health",
+    "drugClass": "Atypical Antipsychotic",
+    "condition": "Schizophrenia / Bipolar Disorder / Major Depression",
+    "brands": [
+      "Seroquel"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#fde68a",
+    "c2": "#fde68a",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "RABEPRAZOLE EC",
+    "strength": "20 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Stomach Acid Pill (Pariet type)",
+    "category": "Stomach",
+    "drugClass": "Proton Pump Inhibitor (PPI)",
+    "condition": "GERD / Acid Reflux / Peptic Ulcer",
+    "brands": [
+      "Pariet",
+      "Aciphex"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#fde68a",
+    "c2": "#fde68a",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "ROSUVASTATIN",
+    "strength": "20 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Cholesterol Pill (Crestor type)",
+    "category": "Cholesterol",
+    "drugClass": "Statin",
+    "condition": "High Cholesterol / Cardiovascular Prevention",
+    "brands": [
+      "Crestor"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#f87171",
+    "c2": "#f87171",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "ROSUVASTATIN",
+    "strength": "5 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Cholesterol Pill (Crestor type)",
+    "category": "Cholesterol",
+    "drugClass": "Statin",
+    "condition": "High Cholesterol / Cardiovascular Prevention",
+    "brands": [
+      "Crestor"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#fca5a5",
+    "c2": "#fca5a5",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "SANDOZ-BISOPROLOL",
+    "strength": "2.5 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Heart Rate / BP Pill (Beta Blocker)",
+    "category": "BP & Heart",
+    "drugClass": "Beta Blocker",
+    "condition": "Hypertension / Heart Failure / Angina",
+    "brands": [
+      "Monocor",
+      "Zebeta"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#6ee7b7",
+    "c2": "#6ee7b7",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "SANDOZ-CANDESARTAN",
+    "strength": "16 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Blood Pressure Pill (ARB / Atacand type)",
+    "category": "BP & Heart",
+    "drugClass": "ARB (Angiotensin Receptor Blocker)",
+    "condition": "Hypertension / Heart Failure / Diabetic Nephropathy",
+    "brands": [
+      "Atacand"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#93c5fd",
+    "c2": "#93c5fd",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "SANDOZ-CANDESARTAN",
+    "strength": "8 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Blood Pressure Pill (ARB / Atacand type)",
+    "category": "BP & Heart",
+    "drugClass": "ARB (Angiotensin Receptor Blocker)",
+    "condition": "Hypertension / Heart Failure / Diabetic Nephropathy",
+    "brands": [
+      "Atacand"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#bfdbfe",
+    "c2": "#bfdbfe",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "SANDOZ-EZETIMIBE",
+    "strength": "10 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Cholesterol Absorption Blocker (Ezetrol type)",
+    "category": "Cholesterol",
+    "drugClass": "Cholesterol Absorption Inhibitor",
+    "condition": "High Cholesterol (add-on when statin not enough)",
+    "brands": [
+      "Ezetrol"
+    ],
+    "isGeneric": true,
+    "odb": "Limited Use",
+    "odbNotes": "LU code required \u2014 must have tried/failed or cannot tolerate a statin.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#e2e8f0",
+    "c2": "#e2e8f0",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "SERTRALINE",
+    "strength": "50 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Antidepressant (Zoloft type)",
+    "category": "Mental Health",
+    "drugClass": "SSRI",
+    "condition": "Depression / OCD / PTSD / Anxiety",
+    "brands": [
+      "Zoloft"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#fde68a",
+    "c2": "#fde68a",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "SYNTHROID",
+    "strength": "100 MCG",
+    "din": "",
+    "mfr": "BGP",
+    "commonName": "Thyroid Pill",
+    "category": "Thyroid & Hormones",
+    "drugClass": "Thyroid Hormone (Levothyroxine)",
+    "condition": "Hypothyroidism / Underactive Thyroid",
+    "brands": [
+      "Synthroid",
+      "Eltroxin"
+    ],
+    "isGeneric": false,
+    "odb": "Covered",
+    "odbNotes": "Synthroid brand covered on ODB \u2014 general benefit, no LU code.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#fbbf24",
+    "c2": "#fbbf24",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "SYNTHROID",
+    "strength": "50 MCG",
+    "din": "",
+    "mfr": "BGP",
+    "commonName": "Thyroid Pill",
+    "category": "Thyroid & Hormones",
+    "drugClass": "Thyroid Hormone (Levothyroxine)",
+    "condition": "Hypothyroidism / Underactive Thyroid",
+    "brands": [
+      "Synthroid",
+      "Eltroxin"
+    ],
+    "isGeneric": false,
+    "odb": "Covered",
+    "odbNotes": "Synthroid brand covered on ODB \u2014 general benefit, no LU code.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#fca5a5",
+    "c2": "#fca5a5",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "SYNTHROID",
+    "strength": "75 MCG",
+    "din": "",
+    "mfr": "BGP",
+    "commonName": "Thyroid Pill",
+    "category": "Thyroid & Hormones",
+    "drugClass": "Thyroid Hormone (Levothyroxine)",
+    "condition": "Hypothyroidism / Underactive Thyroid",
+    "brands": [
+      "Synthroid",
+      "Eltroxin"
+    ],
+    "isGeneric": false,
+    "odb": "Covered",
+    "odbNotes": "Synthroid brand covered on ODB \u2014 general benefit, no LU code.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#a78bfa",
+    "c2": "#a78bfa",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "TADALAFIL",
+    "strength": "20 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "ED Pill (Cialis type)",
+    "category": "Other",
+    "drugClass": "PDE5 Inhibitor",
+    "condition": "Erectile Dysfunction / Enlarged Prostate (BPH)",
+    "brands": [
+      "Cialis",
+      "Adcirca"
+    ],
+    "isGeneric": true,
+    "odb": "Not Covered",
+    "odbNotes": "ODB does not cover ED medications.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#fde68a",
+    "c2": "#fde68a",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "TAMSULOSIN CR",
+    "strength": "0.4 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Prostate / BPH Pill (Flomax type)",
+    "category": "Bladder & Prostate",
+    "drugClass": "Alpha-1 Blocker",
+    "condition": "Benign Prostatic Hyperplasia (BPH) / Enlarged Prostate",
+    "brands": [
+      "Flomax"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "capsule",
+    "c1": "#f87171",
+    "c2": "#e2e8f0",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "TARO-BUPROPION XL",
+    "strength": "300 MG",
+    "din": "",
+    "mfr": "TAR",
+    "commonName": "Antidepressant / Quit Smoking (Wellbutrin type)",
+    "category": "Mental Health",
+    "drugClass": "NDRI Antidepressant",
+    "condition": "Depression / Seasonal Affective Disorder / Smoking Cessation",
+    "brands": [
+      "Wellbutrin XL",
+      "Zyban"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#fde68a",
+    "c2": "#fde68a",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "TEVA-LORAZEPAM",
+    "strength": "1 MG",
+    "din": "",
+    "mfr": "TEV",
+    "commonName": "Anxiety Pill (Ativan type)",
+    "category": "Sleep & Anxiety",
+    "drugClass": "Benzodiazepine",
+    "condition": "Anxiety / Insomnia / Seizures / Pre-op Sedation",
+    "brands": [
+      "Ativan"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#fde68a",
+    "c2": "#fde68a",
+    "controlled": true,
+    "opioid": false
+  },
+  {
+    "name": "TEVA-OXYCOCET",
+    "strength": "5/325 MG",
+    "din": "",
+    "mfr": "TEV",
+    "commonName": "Opioid + Tylenol (Percocet type)",
+    "category": "Opioid",
+    "drugClass": "Opioid Combination Analgesic",
+    "condition": "Moderate-to-Severe Pain (post-op, trauma, cancer)",
+    "brands": [
+      "Percocet"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#fca5a5",
+    "c2": "#fca5a5",
+    "controlled": true,
+    "opioid": true
+  },
+  {
+    "name": "TEVA-SPIRONOLACTONE",
+    "strength": "25 MG",
+    "din": "",
+    "mfr": "TEV",
+    "commonName": "Water Pill / Heart Pill (Aldactone type)",
+    "category": "BP & Heart",
+    "drugClass": "Potassium-sparing Diuretic",
+    "condition": "Heart Failure / Hypertension / Hormonal Acne",
+    "brands": [
+      "Aldactone"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "tablet",
+    "c1": "#fde68a",
+    "c2": "#fde68a",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "VENLAFAXINE XR",
+    "strength": "150 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Antidepressant (Effexor type)",
+    "category": "Mental Health",
+    "drugClass": "SNRI",
+    "condition": "Depression / Anxiety / Panic Disorder / Nerve Pain",
+    "brands": [
+      "Effexor XR"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "capsule",
+    "c1": "#f9a8d4",
+    "c2": "#c4b5fd",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "VENLAFAXINE XR",
+    "strength": "75 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Antidepressant (Effexor type)",
+    "category": "Mental Health",
+    "drugClass": "SNRI",
+    "condition": "Depression / Anxiety / Panic Disorder / Nerve Pain",
+    "brands": [
+      "Effexor XR"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "capsule",
+    "c1": "#f9a8d4",
+    "c2": "#c4b5fd",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "VYVANSE",
+    "strength": "40 MG",
+    "din": "",
+    "mfr": "TAK",
+    "commonName": "ADHD Medication (Vyvanse)",
+    "category": "Other",
+    "drugClass": "CNS Stimulant (ADHD)",
+    "condition": "ADHD / Binge Eating Disorder",
+    "brands": [
+      "Vyvanse"
+    ],
+    "isGeneric": false,
+    "odb": "Limited Use",
+    "odbNotes": "LU code required \u2014 ADHD in children 6+ and adults.",
+    "copay": true,
+    "copaySteps": {
+      "name": "Vyvanse",
+      "manufacturer": "Takeda Canada",
+      "phone": "1-877-898-2263",
+      "website": "vyvanse.ca",
+      "steps": [
+        {
+          "title": "Visit vyvanse.ca",
+          "detail": "Go to vyvanse.ca or call Takeda at 1-877-898-2263 Mon\u2013Fri 9am\u20135pm ET."
+        },
+        {
+          "title": "Click 'Savings Card'",
+          "detail": "Navigate to Patient Resources and click 'Get Your Savings Card'."
+        },
+        {
+          "title": "Enter patient details",
+          "detail": "Fill in patient name, DOB, and province."
+        },
+        {
+          "title": "Print or save card",
+          "detail": "Card available immediately \u2014 print, save to phone, or email."
+        },
+        {
+          "title": "Present at dispensary",
+          "detail": "Scan card at pick-up. Takeda covers the co-pay portion up to program maximum."
+        }
+      ]
+    },
+    "pillShape": "capsule",
+    "c1": "#f87171",
+    "c2": "#fbbf24",
+    "controlled": true,
+    "opioid": false
+  },
+  {
+    "name": "WEGOVY",
+    "strength": "2.4 MG/DOSE",
+    "din": "",
+    "mfr": "NOV",
+    "commonName": "Weight Loss Injection \u2014 Weekly (Wegovy)",
+    "category": "Diabetes",
+    "drugClass": "GLP-1 Receptor Agonist (Weight Management)",
+    "condition": "Obesity / Weight Management / Cardiovascular Risk",
+    "brands": [
+      "Wegovy"
+    ],
+    "isGeneric": false,
+    "odb": "Not Covered",
+    "odbNotes": "Not on Ontario formulary as of 2025 \u2014 Wegovy for weight loss not ODB covered.",
+    "copay": true,
+    "copaySteps": {
+      "name": "Wegovy",
+      "manufacturer": "Novo Nordisk Canada",
+      "phone": "1-844-668-6463",
+      "website": "wegovy.ca",
+      "steps": [
+        {
+          "title": "Call or visit wegovy.ca",
+          "detail": "Go to wegovy.ca or call Novo Nordisk at 1-844-668-6463 Mon\u2013Fri 8am\u20138pm ET."
+        },
+        {
+          "title": "Complete patient eligibility check",
+          "detail": "Patient must have BMI \u226530 (or \u226527 with weight-related condition) and valid Wegovy prescription."
+        },
+        {
+          "title": "Enroll in savings program",
+          "detail": "Patient registers with name, DOB, province, and prescriber info."
+        },
+        {
+          "title": "Receive digital or mailed card",
+          "detail": "Card issued digitally (immediate) or mailed within 7\u201310 business days."
+        },
+        {
+          "title": "Apply at dispensary",
+          "detail": "Scan savings card at point-of-sale. Novo Nordisk covers a portion of out-of-pocket cost."
+        }
+      ]
+    },
+    "pillShape": "gel",
+    "c1": "#6ee7b7",
+    "c2": "#6ee7b7",
+    "controlled": false,
+    "opioid": false
+  },
+  {
+    "name": "ZOPICLONE",
+    "strength": "7.5 MG",
+    "din": "",
+    "mfr": "SAN",
+    "commonName": "Sleeping Pill (Imovane type)",
+    "category": "Sleep & Anxiety",
+    "drugClass": "Non-Benzodiazepine Hypnotic (Z-Drug)",
+    "condition": "Insomnia (Short-term Use)",
+    "brands": [
+      "Imovane",
+      "Rhovane"
+    ],
+    "isGeneric": true,
+    "odb": "Covered",
+    "odbNotes": "General benefit \u2014 no LU code required.",
+    "copay": false,
+    "copaySteps": null,
+    "pillShape": "oval",
+    "c1": "#93c5fd",
+    "c2": "#93c5fd",
+    "controlled": true,
+    "opioid": false
+  }
+]

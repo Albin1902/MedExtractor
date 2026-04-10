@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MedNavigator — Shoppers #1221</title>
+<style>
+:root {
+  --blue: #1e5fa8;
+  --blue-dark: #153f70;
+  --blue-light: #e8f0fb;
+  --green: #15803d;
+  --green-bg: #dcfce7;
+  --amber: #b45309;
+  --amber-bg: #fef3c7;
+  --red: #b91c1c;
+  --red-bg: #fee2e2;
+  --purple: #7c3aed;
+  --purple-bg: #f5f3ff;
+  --slate: #475569;
+  --border: #e2e8f0;
+  --radius: 10px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+body { background: #f1f5f9; color: #0f172a; min-height: 100vh; }
+
+/* ── Header ── */
+.app-header {
+  background: linear-gradient(135deg, #1e5fa8 0%, #153f70 100%);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 60px;
+  position: sticky; top: 0; z-index: 200;
+  box-shadow: 0 2px 12px rgba(0,0,0,.25);
+}
+.app-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.app-logo svg { width: 28px; height: 28px; }
+.app-logo h1 { font-size: 17px; font-weight: 700; color: white; letter-spacing: -.3px; }
+.app-logo p { font-size: 11px; color: rgba(255,255,255,.7); line-height: 1; }
+.search-wrap { flex: 1; max-width: 480px; position: relative; }
+.search-wrap input {
+  width: 100%; padding: 9px 14px 9px 38px;
+  background: rgba(255,255,255,.15); border: 1.5px solid rgba(255,255,255,.3);
+  border-radius: 8px; color: white; font-size: 14px; outline: none;
+  transition: all .2s;
+}
+.search-wrap input::placeholder { color: rgba(255,255,255,.6); }
+.search-wrap input:focus { background: rgba(255,255,255,.25); border-color: rgba(255,255,255,.6); }
+.search-wrap .si { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); opacity: .7; }
+.result-count { margin-left: auto; background: rgba(255,255,255,.15); color: white;
+  padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+
+/* ── Category Bar ── */
+.cat-bar {
+  background: white; border-bottom: 1px solid var(--border);
+  padding: 10px 24px; display: flex; gap: 8px; overflow-x: auto;
+  position: sticky; top: 60px; z-index: 190;
+  scrollbar-width: none;
+}
+.cat-bar::-webkit-scrollbar { display: none; }
+.cat-chip {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--border);
+  cursor: pointer; transition: all .15s; flex-shrink: 0;
+  background: #f8fafc; min-width: 72px; user-select: none;
+}
+.cat-chip .icon { font-size: 20px; line-height: 1; }
+.cat-chip .label { font-size: 10px; font-weight: 600; color: var(--slate); text-align: center; line-height: 1.2; }
+.cat-chip:hover { border-color: var(--blue); background: var(--blue-light); }
+.cat-chip.active { border-color: var(--blue); background: var(--blue); }
+.cat-chip.active .label { color: white; }
+
+/* ── Filter Row ── */
+.filter-bar {
+  background: white; border-bottom: 1px solid var(--border);
+  padding: 8px 24px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+  position: sticky; top: 113px; z-index: 180;
+}
+.odb-pills { display: flex; gap: 6px; }
+.odb-pill {
+  padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;
+  border: 1.5px solid var(--border); background: white; cursor: pointer; transition: all .15s;
+  color: var(--slate); user-select: none;
+}
+.odb-pill:hover { border-color: var(--blue); }
+.odb-pill.all.active { background: var(--blue); color: white; border-color: var(--blue); }
+.odb-pill.cov.active { background: var(--green); color: white; border-color: var(--green); }
+.odb-pill.lim.active { background: var(--amber); color: white; border-color: var(--amber); }
+.odb-pill.not.active { background: var(--red); color: white; border-color: var(--red); }
+.odb-pill.cop.active { background: var(--purple); color: white; border-color: var(--purple); }
+.reset-btn {
+  margin-left: auto; padding: 5px 12px; border-radius: 6px;
+  background: #f1f5f9; border: 1.5px solid var(--border); font-size: 12px;
+  cursor: pointer; color: var(--slate); transition: all .15s;
+}
+.reset-btn:hover { background: #fee2e2; border-color: #fca5a5; color: var(--red); }
+
+/* ── Legend ── */
+.legend { padding: 6px 24px; display: flex; gap: 14px; flex-wrap: wrap; background: #f8fafc; border-bottom: 1px solid var(--border); }
+.legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #64748b; }
+.dot { width: 9px; height: 9px; border-radius: 50%; }
+
+/* ── Grid ── */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px; padding: 18px 24px; }
+
+/* ── Card ── */
+.card {
+  background: white; border-radius: var(--radius); border: 1px solid var(--border);
+  display: flex; flex-direction: column; transition: box-shadow .15s, transform .15s;
+  overflow: hidden;
+}
+.card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.1); transform: translateY(-1px); }
+
+.card-top { display: flex; padding: 14px 14px 10px; gap: 12px; border-bottom: 1px solid #f8fafc; }
+.pill-wrap { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.pill-vis {
+  width: 44px; height: 22px; border-radius: 11px;
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,.18), 0 1px 3px rgba(0,0,0,.1);
+  position: relative;
+}
+.pill-vis.tablet { border-radius: 5px; }
+.pill-vis.gel { width: 28px; height: 28px; border-radius: 50%; }
+.pill-vis.capsule {
+  background: linear-gradient(90deg, var(--c1, #aaa) 50%, var(--c2, #888) 50%) !important;
+}
+.pill-form { font-size: 9px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: .3px; }
+
+.title-area { flex: 1; min-width: 0; }
+.drug-name { font-size: 15px; font-weight: 700; color: #0f172a; line-height: 1.2; }
+.strength { font-size: 12px; color: #64748b; margin-top: 1px; }
+.common-name {
+  display: inline-block; margin-top: 5px;
+  background: #fef3c7; color: #92400e;
+  border: 1px solid #fde68a; border-radius: 4px;
+  font-size: 10px; font-weight: 700; padding: 2px 7px; letter-spacing: .2px;
+}
+
+.card-body { padding: 10px 14px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+.info-r { display: flex; gap: 7px; align-items: flex-start; }
+.lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: #94a3b8; min-width: 64px; padding-top: 1px; flex-shrink: 0; }
+.val { font-size: 13px; color: #334155; flex: 1; line-height: 1.4; }
+.class-chip { display: inline-block; background: #e0f2fe; color: #0369a1; border-radius: 4px; font-size: 11px; font-weight: 600; padding: 2px 7px; }
+.brand-tag { display: inline-block; background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; border-radius: 4px; font-size: 11px; padding: 1px 6px; margin: 1px 2px 1px 0; }
+
+.card-footer { padding: 9px 14px 12px; display: flex; flex-wrap: wrap; gap: 5px; border-top: 1px solid #f1f5f9; }
+.badge {
+  display: inline-flex; align-items: center; gap: 3px;
+  padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 700;
+}
+.b-cov { background: var(--green-bg); color: var(--green); }
+.b-lim { background: var(--amber-bg); color: var(--amber); }
+.b-not { background: var(--red-bg); color: var(--red); }
+.b-gen { background: #f0f9ff; color: #0369a1; }
+.b-brand { background: #faf5ff; color: var(--purple); }
+.b-copay { background: var(--purple-bg); color: var(--purple); cursor: pointer; }
+.b-copay:hover { background: var(--purple); color: white; }
+.b-opioid { background: #fff7ed; color: #c2410c; }
+.b-ctrl { background: #fff7ed; color: #b45309; }
+.b-tri { background: #f0fdf4; color: #15803d; }
+
+/* ── Copay Modal ── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 1000;
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+  opacity: 0; pointer-events: none; transition: opacity .2s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: white; border-radius: 14px; max-width: 520px; width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25); overflow: hidden;
+  transform: scale(.95); transition: transform .2s;
+}
+.modal-overlay.open .modal { transform: scale(1); }
+.modal-head { background: linear-gradient(135deg, #7c3aed, #5b21b6); padding: 18px 20px; color: white; }
+.modal-head h2 { font-size: 16px; font-weight: 700; }
+.modal-head p { font-size: 12px; opacity: .8; margin-top: 3px; }
+.modal-body { padding: 20px; }
+.steps-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: #94a3b8; margin-bottom: 12px; }
+.step {
+  display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start;
+}
+.step-num {
+  width: 26px; height: 26px; border-radius: 50%; background: var(--purple);
+  color: white; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.step-text { flex: 1; }
+.step-text strong { display: block; font-size: 13px; color: #1e293b; margin-bottom: 2px; }
+.step-text span { font-size: 12px; color: #64748b; line-height: 1.5; }
+.step-text a { color: var(--purple); text-decoration: none; font-weight: 600; }
+.step-text a:hover { text-decoration: underline; }
+.modal-foot { padding: 0 20px 16px; display: flex; justify-content: flex-end; }
+.close-btn { padding: 8px 20px; background: var(--blue); color: white; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; }
+
+/* ── No results ── */
+.no-res { grid-column: 1/-1; text-align: center; padding: 60px; color: #94a3b8; }
+.no-res .icon { font-size: 48px; margin-bottom: 12px; }
+.no-res h3 { font-size: 18px; color: #64748b; margin-bottom: 6px; }
+
+@media(max-width:600px){
+  .app-header { padding: 0 14px; height: 56px; }
+  .filter-bar { top: 108px; padding: 8px 14px; }
+  .cat-bar { padding: 8px 14px; top: 56px; }
+  .grid { padding: 12px 14px; grid-template-columns: 1fr; }
+  .legend { padding: 6px 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="app-header">
+  <div class="app-logo">
+    <svg viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="rgba(255,255,255,.15)"/><path d="M8 14h12M14 8v12" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <div><h1>MedNavigator</h1><p>Shoppers Drug Mart #1221 · Brooklin, ON</p></div>
+  </div>
+  <div class="search-wrap">
+    <svg class="si" width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="searchInput" placeholder="Search drug, brand, condition, common name…" oninput="applyFilters()">
+  </div>
+  <div class="result-count" id="countBadge">63 medications</div>
+</header>
+
+<!-- Category Bar -->
+<div class="cat-bar" id="catBar">
+  <div class="cat-chip active" data-cat="all" onclick="setCat(this)"><div class="icon">💊</div><div class="label">All Meds</div></div>
+  <div class="cat-chip" data-cat="BP & Heart" onclick="setCat(this)"><div class="icon">❤️</div><div class="label">BP &amp; Heart</div></div>
+  <div class="cat-chip" data-cat="Cholesterol" onclick="setCat(this)"><div class="icon">🩸</div><div class="label">Cholesterol</div></div>
+  <div class="cat-chip" data-cat="Diabetes" onclick="setCat(this)"><div class="icon">💉</div><div class="label">Diabetes</div></div>
+  <div class="cat-chip" data-cat="Blood Thinner" onclick="setCat(this)"><div class="icon">🩹</div><div class="label">Blood Thinners</div></div>
+  <div class="cat-chip" data-cat="Mental Health" onclick="setCat(this)"><div class="icon">🧠</div><div class="label">Mental Health</div></div>
+  <div class="cat-chip" data-cat="Pain & Nerve" onclick="setCat(this)"><div class="icon">⚡</div><div class="label">Pain &amp; Nerve</div></div>
+  <div class="cat-chip" data-cat="Sleep & Anxiety" onclick="setCat(this)"><div class="icon">😴</div><div class="label">Sleep &amp; Anxiety</div></div>
+  <div class="cat-chip" data-cat="Antibiotics" onclick="setCat(this)"><div class="icon">🦠</div><div class="label">Antibiotics</div></div>
+  <div class="cat-chip" data-cat="Stomach" onclick="setCat(this)"><div class="icon">🫁</div><div class="label">Stomach / GI</div></div>
+  <div class="cat-chip" data-cat="Thyroid & Hormones" onclick="setCat(this)"><div class="icon">🌸</div><div class="label">Thyroid &amp; Hormones</div></div>
+  <div class="cat-chip" data-cat="Bladder & Prostate" onclick="setCat(this)"><div class="icon">💧</div><div class="label">Bladder &amp; Prostate</div></div>
+  <div class="cat-chip" data-cat="Opioid" onclick="setCat(this)"><div class="icon">⚠️</div><div class="label">Opioids</div></div>
+  <div class="cat-chip" data-cat="Other" onclick="setCat(this)"><div class="icon">🔬</div><div class="label">Other</div></div>
+</div>
+
+<!-- Filter Bar -->
+<div class="filter-bar">
+  <div class="odb-pills">
+    <div class="odb-pill all active" data-odb="all" onclick="setOdb(this)">All ODB</div>
+    <div class="odb-pill cov" data-odb="Covered" onclick="setOdb(this)">🟢 ODB Covered</div>
+    <div class="odb-pill lim" data-odb="Limited Use" onclick="setOdb(this)">🟡 Limited Use</div>
+    <div class="odb-pill not" data-odb="Not Covered" onclick="setOdb(this)">🔴 Not Covered</div>
+    <div class="odb-pill cop" data-odb="copay" onclick="setOdb(this)">⭐ Has Copay Card</div>
+  </div>
+  <button class="reset-btn" onclick="resetAll()">✕ Reset Filters</button>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><div class="dot" style="background:#15803d"></div> ODB Covered (green row)</div>
+  <div class="legend-item"><div class="dot" style="background:#b45309"></div> Limited Use – LU code needed</div>
+  <div class="legend-item"><div class="dot" style="background:#b91c1c"></div> Not ODB Covered</div>
+  <div class="legend-item"><div class="dot" style="background:#7c3aed"></div> ⭐ Copay / Patient Assist Card</div>
+  <div class="legend-item"><div class="dot" style="background:#c2410c"></div> Opioid / Controlled substance</div>
+</div>
+
+<!-- Grid -->
+<div class="grid" id="grid"></div>
+
+<!-- Copay Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="modalTitle">Copay Card Info</h2>
+      <p id="modalSubtitle"></p>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot"><button class="close-btn" onclick="closeModalDirect()">Close</button></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════
+//  DRUG DATABASE — 63 Medications | HealthWatch Fast Movers
+//  Shoppers Drug Mart #1221, Brooklin ON
+// ══════════════════════════════════════════════════════════
+const DRUGS = [
+  {
+    name:"ALYSENA-28", strength:"100/20 MCG", din:"02387883", mfr:"APO",
+    commonName:"Birth Control Pill",
+    category:"Other",
+    drugClass:"Oral Contraceptive",
+    condition:"Contraception / Birth Control",
+    brands:["Alesse"],
+    isGeneric:true, odb:"Not Covered",
+    odbNotes:"ODB does not routinely cover oral contraceptives.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#f472b6", c2:"#f472b6",
+    controlled:false, opioid:false
+  },
+  {
+    name:"AMLODIPINE", strength:"10 MG", din:"02331292", mfr:"SAN",
+    commonName:"Blood Pressure Pill",
+    category:"BP & Heart",
+    drugClass:"Calcium Channel Blocker",
+    condition:"Hypertension / Angina",
+    brands:["Norvasc"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#60a5fa", c2:"#60a5fa",
+    controlled:false, opioid:false
+  },
+  {
+    name:"AMLODIPINE", strength:"5 MG", din:"02331284", mfr:"SAN",
+    commonName:"Blood Pressure Pill",
+    category:"BP & Heart",
+    drugClass:"Calcium Channel Blocker",
+    condition:"Hypertension / Angina",
+    brands:["Norvasc"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#93c5fd", c2:"#93c5fd",
+    controlled:false, opioid:false
+  },
+  {
+    name:"AMOXICILLIN", strength:"500 MG", din:"02525356", mfr:"SAN",
+    commonName:"Penicillin Antibiotic",
+    category:"Antibiotics",
+    drugClass:"Penicillin Antibiotic",
+    condition:"Bacterial Infections / Strep Throat / Ear Infections",
+    brands:["Amoxil"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"capsule", c1:"#fbbf24", c2:"#f87171",
+    controlled:false, opioid:false
+  },
+  {
+    name:"APIXABAN", strength:"2.5 MG", din:"02548879", mfr:"SAN",
+    commonName:"Blood Thinner (Eliquis type)",
+    category:"Blood Thinner",
+    drugClass:"Direct Oral Anticoagulant (DOAC)",
+    condition:"Atrial Fibrillation / DVT / Blood Clot Prevention",
+    brands:["Eliquis"],
+    isGeneric:true, odb:"Limited Use",
+    odbNotes:"LU code required — for AF, DVT/PE prevention indications.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#fbbf24", c2:"#fbbf24",
+    controlled:false, opioid:false
+  },
+  {
+    name:"APO-DOXY", strength:"100 MG", din:"", mfr:"APO",
+    commonName:"Doxycycline Antibiotic",
+    category:"Antibiotics",
+    drugClass:"Tetracycline Antibiotic",
+    condition:"Bacterial Infections / Acne / Lyme Disease",
+    brands:["Vibramycin"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"capsule", c1:"#fbbf24", c2:"#34d399",
+    controlled:false, opioid:false
+  },
+  {
+    name:"APO-NAPROXEN", strength:"500 MG", din:"", mfr:"APO",
+    commonName:"Anti-Inflammatory (Naprosyn type)",
+    category:"Pain & Nerve",
+    drugClass:"NSAID",
+    condition:"Pain / Arthritis / Inflammation",
+    brands:["Naprosyn","Aleve"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#94a3b8", c2:"#94a3b8",
+    controlled:false, opioid:false
+  },
+  {
+    name:"ATORVASTATIN", strength:"10 MG", din:"", mfr:"SAN",
+    commonName:"Cholesterol Pill (Lipitor type)",
+    category:"Cholesterol",
+    drugClass:"Statin",
+    condition:"High Cholesterol / Hyperlipidemia",
+    brands:["Lipitor"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#a78bfa", c2:"#a78bfa",
+    controlled:false, opioid:false
+  },
+  {
+    name:"ATORVASTATIN", strength:"20 MG", din:"", mfr:"SAN",
+    commonName:"Cholesterol Pill (Lipitor type)",
+    category:"Cholesterol",
+    drugClass:"Statin",
+    condition:"High Cholesterol / Hyperlipidemia",
+    brands:["Lipitor"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#a78bfa", c2:"#a78bfa",
+    controlled:false, opioid:false
+  },
+  {
+    name:"ATORVASTATIN", strength:"40 MG", din:"", mfr:"SAN",
+    commonName:"Cholesterol Pill (Lipitor type)",
+    category:"Cholesterol",
+    drugClass:"Statin",
+    condition:"High Cholesterol / Hyperlipidemia",
+    brands:["Lipitor"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#a78bfa", c2:"#a78bfa",
+    controlled:false, opioid:false
+  },
+  {
+    name:"ATORVASTATIN", strength:"80 MG", din:"", mfr:"SAN",
+    commonName:"Cholesterol Pill (Lipitor type)",
+    category:"Cholesterol",
+    drugClass:"Statin",
+    condition:"High Cholesterol / Hyperlipidemia",
+    brands:["Lipitor"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#c4b5fd", c2:"#c4b5fd",
+    controlled:false, opioid:false
+  },
+  {
+    name:"AURO-BILASTINE", strength:"20 MG", din:"", mfr:"AUR",
+    commonName:"Allergy Pill (Blexten type)",
+    category:"Other",
+    drugClass:"H1 Antihistamine",
+    condition:"Seasonal Allergies / Hives / Rhinitis",
+    brands:["Blexten"],
+    isGeneric:true, odb:"Not Covered",
+    odbNotes:"Bilastine not on Ontario formulary — patient pays out-of-pocket.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#34d399", c2:"#34d399",
+    controlled:false, opioid:false
+  },
+  {
+    name:"BACLOFEN", strength:"10 MG", din:"", mfr:"SAN",
+    commonName:"Muscle Relaxer",
+    category:"Pain & Nerve",
+    drugClass:"Muscle Relaxant",
+    condition:"Muscle Spasm / Spasticity / MS",
+    brands:["Lioresal"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#e2e8f0", c2:"#e2e8f0",
+    controlled:false, opioid:false
+  },
+  {
+    name:"CEPHALEXIN", strength:"500 MG", din:"", mfr:"SAN",
+    commonName:"Cephalosporin Antibiotic",
+    category:"Antibiotics",
+    drugClass:"Cephalosporin Antibiotic",
+    condition:"Bacterial Infections / Skin Infections / UTI",
+    brands:["Keflex"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"capsule", c1:"#f87171", c2:"#fbbf24",
+    controlled:false, opioid:false
+  },
+  {
+    name:"CITALOPRAM", strength:"20 MG", din:"", mfr:"SAN",
+    commonName:"Antidepressant (Celexa type)",
+    category:"Mental Health",
+    drugClass:"SSRI",
+    condition:"Depression / Anxiety / Panic Disorder",
+    brands:["Celexa"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#fde68a", c2:"#fde68a",
+    controlled:false, opioid:false
+  },
+  {
+    name:"CLOPIDOGREL", strength:"75 MG", din:"", mfr:"SAN",
+    commonName:"Blood Thinner (Plavix type)",
+    category:"Blood Thinner",
+    drugClass:"Antiplatelet Agent",
+    condition:"Heart Attack / Stroke Prevention",
+    brands:["Plavix"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#f87171", c2:"#f87171",
+    controlled:false, opioid:false
+  },
+  {
+    name:"DAYVIGO", strength:"5 MG", din:"", mfr:"EIS",
+    commonName:"Sleeping Pill (Newer type)",
+    category:"Sleep & Anxiety",
+    drugClass:"Orexin Receptor Antagonist",
+    condition:"Insomnia (Difficulty Falling / Staying Asleep)",
+    brands:["Dayvigo"],
+    isGeneric:false, odb:"Not Covered",
+    odbNotes:"Lemborexant not on Ontario formulary — brand drug, patient pays full cost.",
+    copay:true,
+    copaySteps:{
+      name:"Dayvigo",
+      manufacturer:"Eisai Canada",
+      phone:"1-833-374-2637",
+      website:"dayvigo.ca",
+      steps:[
+        {title:"Confirm eligibility",detail:"Patient must have private insurance; program covers the co-pay portion after insurance pays."},
+        {title:"Call or visit the website",detail:"Call Eisai at 1-833-374-2637 or go to dayvigo.ca to enroll patient."},
+        {title:"Complete enrollment form",detail:"Patient provides name, DOB, insurance info, and prescriber name."},
+        {title:"Receive savings card",detail:"Card is mailed or provided digitally — patient presents at pick-up window."},
+        {title:"Apply at dispensary",detail:"Scan card at point-of-sale. Eisai covers remaining co-pay up to program limits."}
+      ]
+    },
+    pillShape:"oval", c1:"#818cf8", c2:"#818cf8",
+    controlled:false, opioid:false
+  },
+  {
+    name:"ESCITALOPRAM", strength:"20 MG", din:"", mfr:"SAN",
+    commonName:"Antidepressant (Cipralex type)",
+    category:"Mental Health",
+    drugClass:"SSRI",
+    condition:"Depression / Generalized Anxiety Disorder",
+    brands:["Cipralex","Lexapro"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#fde68a", c2:"#fde68a",
+    controlled:false, opioid:false
+  },
+  {
+    name:"ESTROGEL", strength:"0.06%", din:"", mfr:"ORG",
+    commonName:"Estrogen Gel (Hormone Therapy)",
+    category:"Thyroid & Hormones",
+    drugClass:"Estrogen (Hormone Therapy)",
+    condition:"Menopause Symptoms / Estrogen Deficiency",
+    brands:["Estrogel"],
+    isGeneric:false, odb:"Limited Use",
+    odbNotes:"LU code required — menopausal symptoms or osteoporosis indication.",
+    copay:true,
+    copaySteps:{
+      name:"Estrogel",
+      manufacturer:"Organon Canada",
+      phone:"1-888-394-7377",
+      website:"organon.com/ca",
+      steps:[
+        {title:"Ask for Organon patient support",detail:"Call Organon at 1-888-394-7377 or ask pharmacist for the current co-pay card."},
+        {title:"Complete patient enrollment",detail:"Patient fills in name, DOB, and prescriber details on the form."},
+        {title:"Verify insurance",detail:"Program is meant to cover remaining co-pay after private insurance (not intended for ODB-only patients)."},
+        {title:"Receive/download card",detail:"Card can be printed from the website or provided by pharmacist."},
+        {title:"Present at pick-up",detail:"Scan savings card at dispensary window. Savings applied instantly at point-of-sale."}
+      ]
+    },
+    pillShape:"gel", c1:"#f9a8d4", c2:"#f9a8d4",
+    controlled:false, opioid:false
+  },
+  {
+    name:"FLUOXETINE", strength:"20 MG", din:"", mfr:"SAN",
+    commonName:"Antidepressant (Prozac type)",
+    category:"Mental Health",
+    drugClass:"SSRI",
+    condition:"Depression / OCD / Bulimia / Panic Disorder",
+    brands:["Prozac","Sarafem"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"capsule", c1:"#34d399", c2:"#a78bfa",
+    controlled:false, opioid:false
+  },
+  {
+    name:"FUROSEMIDE", strength:"40 MG", din:"", mfr:"SAN",
+    commonName:"Water Pill (Lasix type)",
+    category:"BP & Heart",
+    drugClass:"Loop Diuretic",
+    condition:"Edema / Heart Failure / Hypertension",
+    brands:["Lasix"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#e2e8f0", c2:"#e2e8f0",
+    controlled:false, opioid:false
+  },
+  {
+    name:"GABAPENTIN", strength:"300 MG", din:"", mfr:"SAN",
+    commonName:"Nerve Pain Pill",
+    category:"Pain & Nerve",
+    drugClass:"Neuropathic Pain Agent / Anticonvulsant",
+    condition:"Neuropathic Pain / Epilepsy / Shingles Pain",
+    brands:["Neurontin"],
+    isGeneric:true, odb:"Limited Use",
+    odbNotes:"LU code required for neuropathic pain; general benefit for epilepsy.",
+    copay:false, copaySteps:null,
+    pillShape:"capsule", c1:"#fde68a", c2:"#fde68a",
+    controlled:true, opioid:false
+  },
+  {
+    name:"JAMP-FER", strength:"300 MG", din:"", mfr:"JAM",
+    commonName:"Iron Pill",
+    category:"Other",
+    drugClass:"Iron Supplement",
+    condition:"Iron Deficiency Anemia",
+    brands:["Palafer","FeroGrad"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"capsule", c1:"#b45309", c2:"#d97706",
+    controlled:false, opioid:false
+  },
+  {
+    name:"JARDIANCE", strength:"10 MG", din:"", mfr:"BOE",
+    commonName:"Diabetes & Heart Pill (SGLT2 type)",
+    category:"Diabetes",
+    drugClass:"SGLT2 Inhibitor",
+    condition:"Type 2 Diabetes / Heart Failure / Chronic Kidney Disease",
+    brands:["Jardiance"],
+    isGeneric:false, odb:"Limited Use",
+    odbNotes:"LU code required — T2DM with established CV disease or HF.",
+    copay:true,
+    copaySteps:{
+      name:"Jardiance",
+      manufacturer:"Boehringer Ingelheim",
+      phone:"1-877-331-7827",
+      website:"jardiance.ca",
+      steps:[
+        {title:"Go to jardiance.ca or call",detail:"Visit jardiance.ca/patient or call Boehringer Ingelheim at 1-877-331-7827 Mon–Fri 8am–8pm ET."},
+        {title:"Enroll patient online",detail:"Click 'Get Savings Card'. Enter patient name, date of birth, and province."},
+        {title:"Print or save the card",detail:"Card is generated immediately — can be printed or saved to phone. No mailing required."},
+        {title:"Verify insurance first",detail:"The copay card covers the patient's share after insurance. ODB-only patients should call the support line for alternate options."},
+        {title:"Scan card at pick-up",detail:"Scan barcode on savings card at dispensary. Boehringer covers the co-pay up to program maximum per fill."}
+      ]
+    },
+    pillShape:"oval", c1:"#6ee7b7", c2:"#6ee7b7",
+    controlled:false, opioid:false
+  },
+  {
+    name:"JARDIANCE", strength:"25 MG", din:"", mfr:"BOE",
+    commonName:"Diabetes & Heart Pill (SGLT2 type)",
+    category:"Diabetes",
+    drugClass:"SGLT2 Inhibitor",
+    condition:"Type 2 Diabetes / Heart Failure / Chronic Kidney Disease",
+    brands:["Jardiance"],
+    isGeneric:false, odb:"Limited Use",
+    odbNotes:"LU code required — T2DM with established CV disease or HF.",
+    copay:true,
+    copaySteps:{
+      name:"Jardiance 25mg",
+      manufacturer:"Boehringer Ingelheim",
+      phone:"1-877-331-7827",
+      website:"jardiance.ca",
+      steps:[
+        {title:"Go to jardiance.ca or call",detail:"Visit jardiance.ca/patient or call Boehringer Ingelheim at 1-877-331-7827 Mon–Fri 8am–8pm ET."},
+        {title:"Enroll patient online",detail:"Click 'Get Savings Card'. Enter patient name, date of birth, and province."},
+        {title:"Print or save the card",detail:"Card is generated immediately — can be printed or saved to phone. No mailing required."},
+        {title:"Verify insurance first",detail:"The copay card covers the patient's share after insurance. ODB-only patients should call the support line for alternate options."},
+        {title:"Scan card at pick-up",detail:"Scan barcode on savings card at dispensary. Boehringer covers the co-pay up to program maximum per fill."}
+      ]
+    },
+    pillShape:"oval", c1:"#34d399", c2:"#34d399",
+    controlled:false, opioid:false
+  },
+  {
+    name:"JUBLIA", strength:"10%", din:"", mfr:"BAU",
+    commonName:"Nail Fungus Treatment",
+    category:"Other",
+    drugClass:"Antifungal (Topical)",
+    condition:"Onychomycosis (Nail Fungus)",
+    brands:["Jublia"],
+    isGeneric:false, odb:"Not Covered",
+    odbNotes:"Not on Ontario formulary — cosmetic/nail indication typically excluded.",
+    copay:true,
+    copaySteps:{
+      name:"Jublia",
+      manufacturer:"Bausch Health",
+      phone:"1-833-428-2542",
+      website:"jublia.ca",
+      steps:[
+        {title:"Pick up physical card at dispensary",detail:"Ask your pharmacist — Bausch Health provides printed Jublia co-pay cards to pharmacies directly."},
+        {title:"Or visit jublia.ca",detail:"Go to jublia.ca and click 'Patient Savings'. Fill in patient info to receive a card by mail or digitally."},
+        {title:"Verify eligibility",detail:"Patient must be a Canadian resident with private drug insurance. ODB patients: call 1-833-428-2542."},
+        {title:"Present card with prescription",detail:"Provide the card when picking up Jublia. The discount is applied instantly."},
+        {title:"Annual renewal",detail:"Co-pay card is valid for 12 months. Remind patient to renew card at jublia.ca before it expires."}
+      ]
+    },
+    pillShape:"gel", c1:"#fbbf24", c2:"#fbbf24",
+    controlled:false, opioid:false
+  },
+  {
+    name:"LB ENTERIC CTD ASA", strength:"81 MG", din:"", mfr:"PHA",
+    commonName:"Baby Aspirin (Low-Dose)",
+    category:"Blood Thinner",
+    drugClass:"Antiplatelet / Salicylate",
+    condition:"Cardiovascular Prevention / Heart Attack Prevention",
+    brands:["Aspirin","Novasen"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#fbbf24", c2:"#fbbf24",
+    controlled:false, opioid:false
+  },
+  {
+    name:"MAR-KETOROLAC", strength:"10 MG", din:"", mfr:"MAR",
+    commonName:"Strong Short-term Pain Pill (Toradol)",
+    category:"Pain & Nerve",
+    drugClass:"NSAID (Short-term Analgesic)",
+    condition:"Acute Pain / Post-operative Pain",
+    brands:["Toradol"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — short-term use only (max 5 days oral).",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#e2e8f0", c2:"#e2e8f0",
+    controlled:false, opioid:false
+  },
+  {
+    name:"METFORMIN", strength:"500 MG", din:"", mfr:"SAN",
+    commonName:"Diabetes Pill (Glucophage type)",
+    category:"Diabetes",
+    drugClass:"Biguanide (Antidiabetic)",
+    condition:"Type 2 Diabetes",
+    brands:["Glucophage","Glumetza"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#e2e8f0", c2:"#e2e8f0",
+    controlled:false, opioid:false
+  },
+  {
+    name:"MYRBETRIQ", strength:"50 MG", din:"", mfr:"AST",
+    commonName:"Overactive Bladder Pill",
+    category:"Bladder & Prostate",
+    drugClass:"Beta-3 Agonist",
+    condition:"Overactive Bladder / Urge Incontinence",
+    brands:["Myrbetriq"],
+    isGeneric:false, odb:"Not Covered",
+    odbNotes:"Not on Ontario formulary — patient pays full cost.",
+    copay:true,
+    copaySteps:{
+      name:"Myrbetriq",
+      manufacturer:"Astellas Pharma Canada",
+      phone:"1-800-765-5616",
+      website:"myrbetriq.ca",
+      steps:[
+        {title:"Call Astellas mySupport",detail:"Call 1-800-765-5616 Mon–Fri 8am–8pm ET, or visit myrbetriq.ca."},
+        {title:"Enroll the patient",detail:"Provide patient name, DOB, address, and prescriber details. Enrollment takes ~5 minutes."},
+        {title:"Receive savings card",detail:"Card mailed within 5–7 business days, or provided digitally for immediate use."},
+        {title:"Confirm coverage type",detail:"Program is most beneficial for patients with private insurance. Some uninsured patients may qualify for a different tier — ask the support line."},
+        {title:"Scan at dispensary",detail:"Apply the card at point-of-sale. Astellas covers the eligible portion of the patient's out-of-pocket cost."}
+      ]
+    },
+    pillShape:"oval", c1:"#60a5fa", c2:"#60a5fa",
+    controlled:false, opioid:false
+  },
+  {
+    name:"NOVO-GESIC FORTE", strength:"500 MG", din:"", mfr:"TEV",
+    commonName:"Tylenol / Acetaminophen",
+    category:"Pain & Nerve",
+    drugClass:"Analgesic / Antipyretic",
+    condition:"Pain / Fever",
+    brands:["Tylenol","Atasol"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#e2e8f0", c2:"#e2e8f0",
+    controlled:false, opioid:false
+  },
+  {
+    name:"OZEMPIC", strength:"1 MG/DOSE", din:"", mfr:"NOV",
+    commonName:"Diabetes Injection — Weekly (Ozempic)",
+    category:"Diabetes",
+    drugClass:"GLP-1 Receptor Agonist",
+    condition:"Type 2 Diabetes / Cardiovascular Risk Reduction",
+    brands:["Ozempic"],
+    isGeneric:false, odb:"Limited Use",
+    odbNotes:"LU code required — T2DM inadequately controlled on 2+ oral agents.",
+    copay:true,
+    copaySteps:{
+      name:"Ozempic",
+      manufacturer:"Novo Nordisk Canada",
+      phone:"1-844-668-6463",
+      website:"ozempicsupport.ca",
+      steps:[
+        {title:"Visit ozempicsupport.ca",detail:"Go to ozempicsupport.ca or call 1-844-668-6463. Click 'Get Started' under patient savings."},
+        {title:"Create a patient account",detail:"Enter patient email, name, DOB, and province. Account creation is free."},
+        {title:"Download or print the card",detail:"Card is generated immediately after enrollment — can be used at the pharmacy right away."},
+        {title:"Check LU code status",detail:"If patient is ODB, ensure the prescriber has submitted the LU code, as ODB may cover most of the cost — copay card covers remaining balance."},
+        {title:"Scan at pick-up",detail:"Present the savings card at dispensary counter. Novo Nordisk covers the remaining co-pay."}
+      ]
+    },
+    pillShape:"gel", c1:"#6ee7b7", c2:"#6ee7b7",
+    controlled:false, opioid:false
+  },
+  {
+    name:"PANTOPRAZOLE T", strength:"40 MG", din:"", mfr:"SAN",
+    commonName:"Stomach Acid Pill (PPI)",
+    category:"Stomach",
+    drugClass:"Proton Pump Inhibitor (PPI)",
+    condition:"GERD / Acid Reflux / Peptic Ulcer",
+    brands:["Tecta","Pantoloc"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#fde68a", c2:"#fde68a",
+    controlled:false, opioid:false
+  },
+  {
+    name:"PANTOPRAZOLE", strength:"40 MG", din:"", mfr:"SAN",
+    commonName:"Stomach Acid Pill (PPI)",
+    category:"Stomach",
+    drugClass:"Proton Pump Inhibitor (PPI)",
+    condition:"GERD / Acid Reflux / Peptic Ulcer",
+    brands:["Tecta","Pantoloc"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#fde68a", c2:"#fde68a",
+    controlled:false, opioid:false
+  },
+  {
+    name:"PERINDOPRIL", strength:"2 MG", din:"", mfr:"SAN",
+    commonName:"Blood Pressure Pill (ACE Inhibitor)",
+    category:"BP & Heart",
+    drugClass:"ACE Inhibitor",
+    condition:"Hypertension / Heart Failure / Diabetic Nephropathy",
+    brands:["Coversyl"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#86efac", c2:"#86efac",
+    controlled:false, opioid:false
+  },
+  {
+    name:"PERINDOPRIL", strength:"4 MG", din:"", mfr:"SAN",
+    commonName:"Blood Pressure Pill (ACE Inhibitor)",
+    category:"BP & Heart",
+    drugClass:"ACE Inhibitor",
+    condition:"Hypertension / Heart Failure / Diabetic Nephropathy",
+    brands:["Coversyl"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#86efac", c2:"#86efac",
+    controlled:false, opioid:false
+  },
+  {
+    name:"PMS-CLONAZEPAM R", strength:"0.5 MG", din:"", mfr:"PHA",
+    commonName:"Anxiety / Seizure Pill (Rivotril type)",
+    category:"Sleep & Anxiety",
+    drugClass:"Benzodiazepine",
+    condition:"Anxiety / Panic Disorder / Seizures",
+    brands:["Rivotril"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#f9a8d4", c2:"#f9a8d4",
+    controlled:true, opioid:false
+  },
+  {
+    name:"PMS-HYDROMORPHONE", strength:"1 MG", din:"", mfr:"PHA",
+    commonName:"Strong Opioid Painkiller (Dilaudid)",
+    category:"Opioid",
+    drugClass:"Opioid Analgesic",
+    condition:"Severe Pain / Cancer Pain / Post-op Pain",
+    brands:["Dilaudid"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#fca5a5", c2:"#fca5a5",
+    controlled:true, opioid:true
+  },
+  {
+    name:"PREGABALIN", strength:"50 MG", din:"", mfr:"SAN",
+    commonName:"Nerve Pain Pill (Lyrica type)",
+    category:"Pain & Nerve",
+    drugClass:"Neuropathic Pain Agent / Anticonvulsant",
+    condition:"Neuropathic Pain / Fibromyalgia / Epilepsy",
+    brands:["Lyrica"],
+    isGeneric:true, odb:"Limited Use",
+    odbNotes:"LU code required — neuropathic pain, epilepsy indications.",
+    copay:false, copaySteps:null,
+    pillShape:"capsule", c1:"#818cf8", c2:"#c4b5fd",
+    controlled:true, opioid:false
+  },
+  {
+    name:"PROGESTERONE", strength:"100 MG", din:"", mfr:"SAN",
+    commonName:"Progesterone Capsule (Hormone Therapy)",
+    category:"Thyroid & Hormones",
+    drugClass:"Progestogen (Hormone Therapy)",
+    condition:"Hormone Replacement Therapy / Endometrial Protection",
+    brands:["Prometrium","Utrogestan"],
+    isGeneric:true, odb:"Limited Use",
+    odbNotes:"LU code required — menopausal HRT, endometrial protection.",
+    copay:false, copaySteps:null,
+    pillShape:"capsule", c1:"#f9a8d4", c2:"#fde68a",
+    controlled:false, opioid:false
+  },
+  {
+    name:"QUETIAPINE", strength:"25 MG", din:"", mfr:"SAN",
+    commonName:"Antipsychotic / Mood Pill (Seroquel type)",
+    category:"Mental Health",
+    drugClass:"Atypical Antipsychotic",
+    condition:"Schizophrenia / Bipolar Disorder / Major Depression",
+    brands:["Seroquel"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#fde68a", c2:"#fde68a",
+    controlled:false, opioid:false
+  },
+  {
+    name:"RABEPRAZOLE EC", strength:"20 MG", din:"", mfr:"SAN",
+    commonName:"Stomach Acid Pill (Pariet type)",
+    category:"Stomach",
+    drugClass:"Proton Pump Inhibitor (PPI)",
+    condition:"GERD / Acid Reflux / Peptic Ulcer",
+    brands:["Pariet","Aciphex"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#fde68a", c2:"#fde68a",
+    controlled:false, opioid:false
+  },
+  {
+    name:"ROSUVASTATIN", strength:"20 MG", din:"", mfr:"SAN",
+    commonName:"Cholesterol Pill (Crestor type)",
+    category:"Cholesterol",
+    drugClass:"Statin",
+    condition:"High Cholesterol / Cardiovascular Prevention",
+    brands:["Crestor"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#f87171", c2:"#f87171",
+    controlled:false, opioid:false
+  },
+  {
+    name:"ROSUVASTATIN", strength:"5 MG", din:"", mfr:"SAN",
+    commonName:"Cholesterol Pill (Crestor type)",
+    category:"Cholesterol",
+    drugClass:"Statin",
+    condition:"High Cholesterol / Cardiovascular Prevention",
+    brands:["Crestor"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#fca5a5", c2:"#fca5a5",
+    controlled:false, opioid:false
+  },
+  {
+    name:"SANDOZ-BISOPROLOL", strength:"2.5 MG", din:"", mfr:"SAN",
+    commonName:"Heart Rate / BP Pill (Beta Blocker)",
+    category:"BP & Heart",
+    drugClass:"Beta Blocker",
+    condition:"Hypertension / Heart Failure / Angina",
+    brands:["Monocor","Zebeta"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#6ee7b7", c2:"#6ee7b7",
+    controlled:false, opioid:false
+  },
+  {
+    name:"SANDOZ-CANDESARTAN", strength:"16 MG", din:"", mfr:"SAN",
+    commonName:"Blood Pressure Pill (ARB / Atacand type)",
+    category:"BP & Heart",
+    drugClass:"ARB (Angiotensin Receptor Blocker)",
+    condition:"Hypertension / Heart Failure / Diabetic Nephropathy",
+    brands:["Atacand"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#93c5fd", c2:"#93c5fd",
+    controlled:false, opioid:false
+  },
+  {
+    name:"SANDOZ-CANDESARTAN", strength:"8 MG", din:"", mfr:"SAN",
+    commonName:"Blood Pressure Pill (ARB / Atacand type)",
+    category:"BP & Heart",
+    drugClass:"ARB (Angiotensin Receptor Blocker)",
+    condition:"Hypertension / Heart Failure / Diabetic Nephropathy",
+    brands:["Atacand"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#bfdbfe", c2:"#bfdbfe",
+    controlled:false, opioid:false
+  },
+  {
+    name:"SANDOZ-EZETIMIBE", strength:"10 MG", din:"", mfr:"SAN",
+    commonName:"Cholesterol Absorption Blocker (Ezetrol type)",
+    category:"Cholesterol",
+    drugClass:"Cholesterol Absorption Inhibitor",
+    condition:"High Cholesterol (add-on when statin not enough)",
+    brands:["Ezetrol"],
+    isGeneric:true, odb:"Limited Use",
+    odbNotes:"LU code required — must have tried/failed or cannot tolerate a statin.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#e2e8f0", c2:"#e2e8f0",
+    controlled:false, opioid:false
+  },
+  {
+    name:"SERTRALINE", strength:"50 MG", din:"", mfr:"SAN",
+    commonName:"Antidepressant (Zoloft type)",
+    category:"Mental Health",
+    drugClass:"SSRI",
+    condition:"Depression / OCD / PTSD / Anxiety",
+    brands:["Zoloft"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#fde68a", c2:"#fde68a",
+    controlled:false, opioid:false
+  },
+  {
+    name:"SYNTHROID", strength:"100 MCG", din:"", mfr:"BGP",
+    commonName:"Thyroid Pill",
+    category:"Thyroid & Hormones",
+    drugClass:"Thyroid Hormone (Levothyroxine)",
+    condition:"Hypothyroidism / Underactive Thyroid",
+    brands:["Synthroid","Eltroxin"],
+    isGeneric:false, odb:"Covered",
+    odbNotes:"Synthroid brand covered on ODB — general benefit, no LU code.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#fbbf24", c2:"#fbbf24",
+    controlled:false, opioid:false
+  },
+  {
+    name:"SYNTHROID", strength:"50 MCG", din:"", mfr:"BGP",
+    commonName:"Thyroid Pill",
+    category:"Thyroid & Hormones",
+    drugClass:"Thyroid Hormone (Levothyroxine)",
+    condition:"Hypothyroidism / Underactive Thyroid",
+    brands:["Synthroid","Eltroxin"],
+    isGeneric:false, odb:"Covered",
+    odbNotes:"Synthroid brand covered on ODB — general benefit, no LU code.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#fca5a5", c2:"#fca5a5",
+    controlled:false, opioid:false
+  },
+  {
+    name:"SYNTHROID", strength:"75 MCG", din:"", mfr:"BGP",
+    commonName:"Thyroid Pill",
+    category:"Thyroid & Hormones",
+    drugClass:"Thyroid Hormone (Levothyroxine)",
+    condition:"Hypothyroidism / Underactive Thyroid",
+    brands:["Synthroid","Eltroxin"],
+    isGeneric:false, odb:"Covered",
+    odbNotes:"Synthroid brand covered on ODB — general benefit, no LU code.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#a78bfa", c2:"#a78bfa",
+    controlled:false, opioid:false
+  },
+  {
+    name:"TADALAFIL", strength:"20 MG", din:"", mfr:"SAN",
+    commonName:"ED Pill (Cialis type)",
+    category:"Other",
+    drugClass:"PDE5 Inhibitor",
+    condition:"Erectile Dysfunction / Enlarged Prostate (BPH) / Pulmonary Hypertension",
+    brands:["Cialis","Adcirca"],
+    isGeneric:true, odb:"Not Covered",
+    odbNotes:"ODB does not cover ED medications. Pulmonary arterial hypertension indication requires LU code.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#fde68a", c2:"#fde68a",
+    controlled:false, opioid:false
+  },
+  {
+    name:"TAMSULOSIN CR", strength:"0.4 MG", din:"", mfr:"SAN",
+    commonName:"Prostate / BPH Pill (Flomax type)",
+    category:"Bladder & Prostate",
+    drugClass:"Alpha-1 Blocker",
+    condition:"Benign Prostatic Hyperplasia (BPH) / Enlarged Prostate",
+    brands:["Flomax"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"capsule", c1:"#f87171", c2:"#e2e8f0",
+    controlled:false, opioid:false
+  },
+  {
+    name:"TARO-BUPROPION XL", strength:"300 MG", din:"", mfr:"TAR",
+    commonName:"Antidepressant / Quit Smoking (Wellbutrin type)",
+    category:"Mental Health",
+    drugClass:"NDRI Antidepressant",
+    condition:"Depression / Seasonal Affective Disorder / Smoking Cessation",
+    brands:["Wellbutrin XL","Zyban"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#fde68a", c2:"#fde68a",
+    controlled:false, opioid:false
+  },
+  {
+    name:"TEVA-LORAZEPAM", strength:"1 MG", din:"", mfr:"TEV",
+    commonName:"Anxiety Pill (Ativan type)",
+    category:"Sleep & Anxiety",
+    drugClass:"Benzodiazepine",
+    condition:"Anxiety / Insomnia / Seizures / Pre-op Sedation",
+    brands:["Ativan"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#fde68a", c2:"#fde68a",
+    controlled:true, opioid:false
+  },
+  {
+    name:"TEVA-OXYCOCET", strength:"5/325 MG", din:"", mfr:"TEV",
+    commonName:"Opioid + Tylenol (Percocet type)",
+    category:"Opioid",
+    drugClass:"Opioid Combination Analgesic",
+    condition:"Moderate-to-Severe Pain (post-op, trauma, cancer)",
+    brands:["Percocet"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#fca5a5", c2:"#fca5a5",
+    controlled:true, opioid:true
+  },
+  {
+    name:"TEVA-SPIRONOLACTONE", strength:"25 MG", din:"", mfr:"TEV",
+    commonName:"Water Pill / Heart Pill (Aldactone type)",
+    category:"BP & Heart",
+    drugClass:"Potassium-sparing Diuretic",
+    condition:"Heart Failure / Hypertension / Hormonal Acne",
+    brands:["Aldactone"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"tablet", c1:"#fde68a", c2:"#fde68a",
+    controlled:false, opioid:false
+  },
+  {
+    name:"VENLAFAXINE XR", strength:"150 MG", din:"", mfr:"SAN",
+    commonName:"Antidepressant (Effexor type)",
+    category:"Mental Health",
+    drugClass:"SNRI",
+    condition:"Depression / Anxiety / Panic Disorder / Nerve Pain",
+    brands:["Effexor XR"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"capsule", c1:"#f9a8d4", c2:"#c4b5fd",
+    controlled:false, opioid:false
+  },
+  {
+    name:"VENLAFAXINE XR", strength:"75 MG", din:"", mfr:"SAN",
+    commonName:"Antidepressant (Effexor type)",
+    category:"Mental Health",
+    drugClass:"SNRI",
+    condition:"Depression / Anxiety / Panic Disorder / Nerve Pain",
+    brands:["Effexor XR"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"capsule", c1:"#f9a8d4", c2:"#c4b5fd",
+    controlled:false, opioid:false
+  },
+  {
+    name:"VYVANSE", strength:"40 MG", din:"", mfr:"TAK",
+    commonName:"ADHD Medication (Vyvanse)",
+    category:"Other",
+    drugClass:"CNS Stimulant (ADHD)",
+    condition:"ADHD / Binge Eating Disorder",
+    brands:["Vyvanse"],
+    isGeneric:false, odb:"Limited Use",
+    odbNotes:"LU code required — ADHD in children 6+ and adults; specific criteria.",
+    copay:true,
+    copaySteps:{
+      name:"Vyvanse",
+      manufacturer:"Takeda Canada",
+      phone:"1-877-898-2263",
+      website:"vyvanse.ca",
+      steps:[
+        {title:"Visit vyvanse.ca",detail:"Go to vyvanse.ca or call Takeda at 1-877-898-2263 Mon–Fri 9am–5pm ET."},
+        {title:"Click 'Savings Card'",detail:"Navigate to the Patient Resources section and click 'Get Your Savings Card'."},
+        {title:"Enter patient details",detail:"Fill in patient name, DOB, and province. No insurance info required at this step."},
+        {title:"Print or save card",detail:"Card available immediately — can be printed, saved to phone, or emailed."},
+        {title:"Present at dispensary",detail:"Give card at pick-up. Takeda covers the co-pay portion up to program maximum (typically $50–$100/fill depending on plan year)."}
+      ]
+    },
+    pillShape:"capsule", c1:"#f87171", c2:"#fbbf24",
+    controlled:true, opioid:false
+  },
+  {
+    name:"WEGOVY", strength:"2.4 MG/DOSE", din:"", mfr:"NOV",
+    commonName:"Weight Loss Injection (Wegovy) — Weekly Shot",
+    category:"Diabetes",
+    drugClass:"GLP-1 Receptor Agonist (Weight Management)",
+    condition:"Obesity / Weight Management / Cardiovascular Risk",
+    brands:["Wegovy"],
+    isGeneric:false, odb:"Not Covered",
+    odbNotes:"Not on Ontario formulary as of 2025 — Wegovy for weight loss not ODB covered.",
+    copay:true,
+    copaySteps:{
+      name:"Wegovy",
+      manufacturer:"Novo Nordisk Canada",
+      phone:"1-844-668-6463",
+      website:"wegovy.ca",
+      steps:[
+        {title:"Call or visit wegovy.ca",detail:"Go to wegovy.ca or call Novo Nordisk at 1-844-668-6463 Mon–Fri 8am–8pm ET."},
+        {title:"Complete patient eligibility check",detail:"Patient must have a BMI ≥30 (or ≥27 with a weight-related condition) and a valid Wegovy prescription."},
+        {title:"Enroll in savings program",detail:"Patient registers with name, DOB, province, and prescriber info. Takes about 10 minutes."},
+        {title:"Receive digital or mailed card",detail:"Card is issued digitally (immediate) or mailed within 7–10 business days."},
+        {title:"Apply at dispensary",detail:"Scan savings card at point-of-sale. Novo Nordisk covers a portion of out-of-pocket cost — particularly helpful for patients with private insurance."}
+      ]
+    },
+    pillShape:"gel", c1:"#6ee7b7", c2:"#6ee7b7",
+    controlled:false, opioid:false
+  },
+  {
+    name:"ZOPICLONE", strength:"7.5 MG", din:"", mfr:"SAN",
+    commonName:"Sleeping Pill (Imovane type)",
+    category:"Sleep & Anxiety",
+    drugClass:"Non-Benzodiazepine Hypnotic (Z-Drug)",
+    condition:"Insomnia (Short-term Use)",
+    brands:["Imovane","Rhovane"],
+    isGeneric:true, odb:"Covered",
+    odbNotes:"General benefit — no LU code required.",
+    copay:false, copaySteps:null,
+    pillShape:"oval", c1:"#93c5fd", c2:"#93c5fd",
+    controlled:true, opioid:false
+  }
+];
+
+// ── State ──
+let activeOdb = 'all';
+let activeCat = 'all';
+
+// ── Render single card ──
+function renderCard(drug) {
+  const odbCls = drug.odb==='Covered'?'b-cov':drug.odb==='Limited Use'?'b-lim':'b-not';
+  const odbIcon = drug.odb==='Covered'?'🟢':drug.odb==='Limited Use'?'🟡':'🔴';
+  const pillStyle = `background:${drug.c1};--c1:${drug.c1};--c2:${drug.c2}`;
+  const brands = drug.brands.map(b=>`<span class="brand-tag">${b}</span>`).join('');
+  const badges = [
+    `<span class="badge ${odbCls}">${odbIcon} ${drug.odb}</span>`,
+    drug.isGeneric ? `<span class="badge b-gen">Ⓖ Generic</span>` : `<span class="badge b-brand">® Brand</span>`,
+    drug.copay ? `<span class="badge b-copay" onclick="showCopay('${drug.name.replace(/'/g,"\\'")}')">⭐ Copay Card →</span>` : '',
+    drug.opioid ? `<span class="badge b-opioid">⚠ Opioid</span>` : (drug.controlled ? `<span class="badge b-ctrl">🔒 Controlled</span>` : ''),
+    !drug.opioid && !drug.controlled && drug.odb!=='Not Covered' ? `<span class="badge b-tri">🍁 Trillium</span>` : ''
+  ].filter(Boolean).join('');
+
+  return `<div class="card"
+    data-name="${drug.name.toLowerCase()}"
+    data-common="${drug.commonName.toLowerCase()}"
+    data-cat="${drug.category}"
+    data-class="${drug.drugClass.toLowerCase()}"
+    data-condition="${drug.condition.toLowerCase()}"
+    data-brands="${drug.brands.join(' ').toLowerCase()}"
+    data-odb="${drug.odb}"
+    data-copay="${drug.copay}">
+    <div class="card-top">
+      <div class="pill-wrap">
+        <div class="pill-vis ${drug.pillShape}" style="${pillStyle}"></div>
+        <div class="pill-form">${drug.pillShape}</div>
+      </div>
+      <div class="title-area">
+        <div class="drug-name">${drug.name}</div>
+        <div class="strength">${drug.strength}${drug.din?' · DIN '+drug.din:''}</div>
+        <div class="common-name">${drug.commonName}</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="info-r"><span class="lbl">Treats</span><span class="val">${drug.condition}</span></div>
+      <div class="info-r"><span class="lbl">Class</span><span class="val"><span class="class-chip">${drug.drugClass}</span></span></div>
+      <div class="info-r"><span class="lbl">Brand(s)</span><span class="val">${brands}</span></div>
+      <div class="info-r"><span class="lbl">ODB Note</span><span class="val" style="font-size:12px;color:#475569">${drug.odbNotes}</span></div>
+      ${drug.copay?`<div class="info-r"><span class="lbl">Copay</span><span class="val" style="font-size:12px;color:#7c3aed;cursor:pointer;font-weight:600" onclick="showCopay('${drug.name.replace(/'/g,"\\'")}')">⭐ Click for step-by-step instructions →</span></div>`:''}
+    </div>
+    <div class="card-footer">${badges}</div>
+  </div>`;
+}
+
+// ── Copay Modal ──
+function showCopay(drugName) {
+  const drug = DRUGS.find(d => d.name === drugName && d.copay && d.copaySteps);
+  if (!drug || !drug.copaySteps) return;
+  const s = drug.copaySteps;
+  document.getElementById('modalTitle').textContent = `${s.name} — Copay Card`;
+  document.getElementById('modalSubtitle').textContent = `${s.manufacturer} · ${s.phone} · ${s.website}`;
+  document.getElementById('modalBody').innerHTML = `
+    <div class="steps-title">How to Access the Patient Savings Card</div>
+    ${s.steps.map((st,i) => `
+      <div class="step">
+        <div class="step-num">${i+1}</div>
+        <div class="step-text">
+          <strong>${st.title}</strong>
+          <span>${st.detail}</span>
+        </div>
+      </div>`).join('')}
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 12px;margin-top:4px;font-size:12px;color:#15803d">
+      <strong>📞 Quick reference:</strong> ${s.manufacturer} · <strong>${s.phone}</strong> · <a href="https://${s.website}" target="_blank">${s.website}</a>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal(e) { if (e.target===document.getElementById('modalOverlay')) closeModalDirect(); }
+function closeModalDirect() { document.getElementById('modalOverlay').classList.remove('open'); }
+
+// ── Filters ──
+function setCat(el) {
+  document.querySelectorAll('.cat-chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  activeCat = el.dataset.cat;
+  applyFilters();
+}
+function setOdb(el) {
+  document.querySelectorAll('.odb-pill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  activeOdb = el.dataset.odb;
+  applyFilters();
+}
+function applyFilters() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.card');
+  let vis = 0;
+  cards.forEach(card => {
+    const matchQ = !q || card.dataset.name.includes(q) || card.dataset.common.includes(q)
+      || card.dataset.condition.includes(q) || card.dataset.brands.includes(q) || card.dataset.class.includes(q);
+    const matchCat = activeCat==='all' || card.dataset.cat===activeCat;
+    const matchOdb = activeOdb==='all' ? true
+      : activeOdb==='copay' ? card.dataset.copay==='true'
+      : card.dataset.odb===activeOdb;
+    const show = matchQ && matchCat && matchOdb;
+    card.style.display = show ? '' : 'none';
+    if (show) vis++;
+  });
+  const noRes = document.getElementById('noRes');
+  if (vis===0 && !noRes) {
+    const el = document.createElement('div');
+    el.id='noRes'; el.className='no-res';
+    el.innerHTML='<div class="icon">🔍</div><h3>No medications match</h3><p>Try clearing some filters</p>';
+    document.getElementById('grid').appendChild(el);
+  } else if (vis>0 && noRes) noRes.remove();
+  document.getElementById('countBadge').textContent =
+    vis===DRUGS.length ? `${DRUGS.length} medications` : `${vis} / ${DRUGS.length}`;
+}
+function resetAll() {
+  document.getElementById('searchInput').value='';
+  document.querySelectorAll('.cat-chip').forEach(c=>c.classList.remove('active'));
+  document.querySelector('.cat-chip[data-cat="all"]').classList.add('active');
+  document.querySelectorAll('.odb-pill').forEach(p=>p.classList.remove('active'));
+  document.querySelector('.odb-pill.all').classList.add('active');
+  activeCat='all'; activeOdb='all';
+  applyFilters();
+}
+
+// ── Init ──
+document.getElementById('grid').innerHTML = DRUGS.map(renderCard).join('');
+document.getElementById('countBadge').textContent = `${DRUGS.length} medications`;
+</script>
+</body>
+</html>
